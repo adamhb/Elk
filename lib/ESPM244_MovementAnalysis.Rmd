@@ -1,0 +1,187 @@
+---
+title: 'ESPM 244: Movement Analysis'
+author: "Ian Wang"
+date: "November 5, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+####################################################################
+##                                                                ##
+##    ESPM 244: Workshop 10                                       ##
+##    Movement Analysis                                           ##
+##                                                                ##
+####################################################################
+
+Set up the workspace...
+```{r}
+library(adehabitatLT)
+library(adehabitatHR)
+library(BBMM)
+library(rgdal)
+library(raster)
+library(move)
+
+setwd()
+```
+
+## Part 1: Basic Movement Trajectories ##
+
+Load the data...
+```{r}
+muleys <-read.csv("muledeer.csv", header = TRUE)
+head(muleys)
+```
+
+Check for duplicates in the dataset...
+```{r}
+summary(duplicated(muleys))
+```
+
+We first need to convert the date to POSIX format in order to plot movement trajectories...
+```{r}
+GPSDate <- as.POSIXct(strptime(muleys$GPSFixTime,format="%Y.%m.%d %H:%M:%S"))
+muleys$GPSDate <- GPSDate
+head(muleys)
+```
+
+Measure the time differences between each recorded point...
+```{r}
+timediff <- diff(muleys$GPSDate)
+muleys <- muleys[-1,] # Remove first row
+muleys$TimeDiff <-abs(as.numeric(timediff))
+dim(muleys)
+head(muleys)
+```
+
+See how many recorded locations there are for each animal...
+```{r}
+summary(muleys$id)
+plot(muleys$X, muleys$Y, pch='+')
+```
+
+Remove outlier locations or known outliers collected too far apart in time...
+```{r}
+muleys.sub <- subset(muleys, muleys$X > 599000 & muleys$X < 705000 & muleys$Y > 4167000 & muleys$TimeDiff < 14401)
+dim(muleys.sub)
+head(muleys.sub)
+```
+
+Plot the total set of location records...
+```{r}
+plot(muleys.sub$X, muleys.sub$Y, pch='+')
+```
+
+Or plot each animal with a separate color...
+```{r}
+plot(muleys.sub$X, muleys.sub$Y, pch='+', col=muleys.sub$id)
+```
+
+To create movement trajectories, we need to add the data to a spatial points data frame...
+```{r}
+xy = muleys.sub[c("X","Y")]
+xy.sp <- SpatialPoints(xy) # spatial points object
+xy.df <- data.frame(xy.sp) # spatial data frame
+
+move.df <- data.frame(ID = muleys.sub[2], TimeDiff = muleys.sub[24], Burst = muleys.sub[23])
+coordinates(move.df) <- xy.df
+head(move.df)
+```
+
+Visualize the movement point locality data (should be the same as above)...
+```{r}
+plot(move.df)
+```
+
+Now create an object of class "ltraj" by animal using the ID field and display the trajectory for the first deer...
+```{r}
+ltraj <- as.ltraj(coordinates(move.df), move.df$GPSDate, id=move.df$id)
+plot(ltraj[1])
+head(ltraj[1]) # Describes the trajectory for the first deer
+```
+
+Or plot the trajectories for all of them...
+```{r}
+plot(ltraj)
+```
+
+Let's create a histogram of time lag (i.e., interval) and distance between successive locations for each deer. This is a nice way to inspect the time lag between locations as you don't want to include a location if too much time has passed since the previous and it also shows why a trajectory is irregular.
+```{r}
+hist(ltraj[1], "dt", freq = TRUE)
+hist(ltraj[1], "dist", freq = TRUE)
+
+hist(ltraj[2], "dt", freq = TRUE)
+hist(ltraj[2], "dist", freq = TRUE)
+```
+
+## Part 2: Brownian Bridge Movement Models ##
+
+Create an object with the movement data for deer D15...
+```{r}
+deerD6 <- subset(muleys.sub, muleys.sub$id == "D6")
+head(deerD6)
+```
+
+Use brownian.bridge function (BBMM package) to estimate the movements between recorded points...
+```{r}
+D6.BBMM = brownian.bridge(x=deerD6$X, y=deerD6$Y, time.lag=deerD15$TimeDiff, location.error=34, cell.size=100)
+bbmm.summary(D6.BBMM)
+```
+
+Plot the areas covered by 50%...95%...99% of movement paths...
+```{r}
+contours <- bbmm.contour(BBMM, levels=c(seq(50, 90, by=10), 95, 99), locations=deerD6, plot=TRUE)
+```
+
+```{r}
+xyz <- data.frame(D6.BBMM$x, D6.BBMM$y, D6.BBMM$probability)
+bbmm.map <- rasterFromXYZ(xyz)
+plot(bbmm.map)
+```
+
+## Part 3: Dynamic Brownian Bridge Movement Models ##
+
+While BBMMs incorporate a temporal component and GPS error into estimates, dynamic Brownian Bridge Movement Models (dBBMM) incorporate temporal and behavioral characteristics of movement paths into estimation of home ranges or utilization distributions.
+
+First, create a Move object for an individual deer...
+```{r}
+deerD6$DT <-as.POSIXct(strptime(deerD6$GPSFixTime, format="%Y.%m.%d %H:%M:%OS")) # Convert time format
+#deerD6 <- deerD6[order(deerD6$DT),]
+D6.move <- move(x=deerD6$X, y=deerD6$Y, time=deerD6$DT, proj=CRS("+proj=utm +zone=12 +datum=NAD83"), data=deerD6, animal=deerD6$id)
+```
+
+Then run dBBMM for the deer to estimate its utilization distribution on the landscape...
+```{r}
+D6.dbbmm <- brownian.bridge.dyn(object=D6.move, location.error=22, window.size=19, margin=7, dimSize=100, time.step=180)
+D6.dbbmm
+```
+
+And plot the results...
+```{r}
+plot(D6.dbbmm)
+contour(D6.dbbmm, levels=c(.5,.9,.95,.99), add=TRUE)
+```
+
+To determine the area size of the utilization distribution, we can calculate the contour raster from the UD raster...
+```{r}
+D6.vol <- getVolumeUD(D6.dbbmm)
+D6.95zone <- D6.vol <= .95
+plot(D6.95zone, main="95% Utilization Distribution")
+area95 <- sum(values(D6.95zone))
+area95
+
+D6.75zone <- D6.vol <= .75
+plot(D6.75zone)
+area75 <- sum(values(D6.75zone))
+area75
+```
+
+### Challenge 1: Subset the recorded locality data to remove records separated by long time lags.  
+### Re-run the BBMMs and dBBMMs to see how this changes the resulting utilization distributions.
+
+### Challenge 2: Examine overlap in the home ranges of different deer.  Construct BBMMs or dBBMMs 
+### for all (or at least some) individuals.  Then calculate the overlap in ranges or the cumulative
+### utilization of different cells on the raster.

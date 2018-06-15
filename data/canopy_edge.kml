@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<GroundOverlay>
+<name>buffered_edge_2</name>
+<Icon><href>canopy_edge.png</href><viewBoundScale>0.75</viewBoundScale></Icon>
+	<LatLonBox>
+		<north>41.7613353916642</north><south>41.3723943186869</south><east>-123.211541577917</east><west>-123.618440551437</west>
+	</LatLonBox>
+</GroundOverlay></kml>

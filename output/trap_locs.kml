@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="trap_locations" id="trap_locations">
+	<SimpleField name="ANIMAL_ID" type="string"></SimpleField>
+	<SimpleField name="SEX" type="string"></SimpleField>
+	<SimpleField name="dt" type="string"></SimpleField>
+</Schema>
+<Folder><name>trap_locations</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E031054F_12</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">0012-02-12 00:02:00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.44998529316884,41.681524146917532</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E159397F_08</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2007-02-21 05:33:38</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.0740872979617,41.104542310825998</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160010F_04</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2002-12-17 16:20:04</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.89410462187367,41.14758658906787</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160010F_08</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2007-01-31 09:02:00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.05652343063466,41.107155598936799</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160017F_08</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2007-01-31 19:03:56</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.04681980660067,41.111069452087541</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160128F_12</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2011-02-06 21:30:37</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.52502366286951,41.485171460163428</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160309F_04</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2002-12-17 16:34:58</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.89410364298965,41.147514533799423</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160309F_08</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2007-02-19 10:01:05</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.0614343849219,41.098838630064371</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160327F_04</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2003-01-10 15:17:55</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-124.06592533058205,41.024112827928477</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160327F_06</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2006-02-07 19:23:10</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.05028412036074,41.093340093961828</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160357F_06</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2006-01-23 16:24:38</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.07424211778185,41.104542211170177</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160377M_08</SimpleData>
+		<SimpleData name="SEX">MALE</SimpleData>
+		<SimpleData name="dt">2007-01-15 07:04:01</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.04965209606875,41.092088243079829</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E160888M_10</SimpleData>
+		<SimpleData name="SEX">MALE</SimpleData>
+		<SimpleData name="dt">2010-02-03 13:00:53</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.52890585882973,41.495620298027575</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E22080F_10</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2010-02-03 10:29:21</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.52889282049605,41.488126185076617</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E31053F_13</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2013-02-02 16:04:00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.4518827869601,41.676247525072291</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#trap_locations">
+		<SimpleData name="ANIMAL_ID">E31055F_13</SimpleData>
+		<SimpleData name="SEX">FEMALE</SimpleData>
+		<SimpleData name="dt">2013-02-04 20:01:00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.43653340240655,41.676910328312523</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

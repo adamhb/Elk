@@ -1,0 +1,44 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+2/27/2018
+
+Questions for Andy
+
+1. how do you handle spaced out time lags from missed fixes? 
+
+3/18/2018
+
+look at page 42 of tlocoh tutorial to see getting GIS data under the relocaitons
+
+see page 48 for making animations
+
+
+Next steps with results
+
+
+0. write up the edge effects methods
+
+
+1. apply the used versus available method to fire for E12's summer range
+
+Look at dates of where they spent there time.
+
+1. make screen shots of two home ranges. One that is partitioned and one that is not. Show elevation differences. 
+2. Create screen shots that shows the best of the web map, and an overview of travel routes, bedding sites, and foraging areas. Mapping this out is setting me up to be able to stratify habitat selection by behavioral state. And it helps my collaborators in the following ways... (show four use cases) 
+3. Create screen shots of four use cases: 1. camera traps 2. where to collar 3. topographic study of bedding sites (filter just the bedding locations) 4. learning how to track elk (picture of elk tracks)
+4. Create finalized list of plant species eaten, show what propotion were fire followers.
+5. use "a" method to select nearest neighbors to create two very nice maps of TLocoh with backgrounds for E12/E13 (space use, eccentricity).
+6. Map tracking observations over the TLocoh eccentricity map
+ 
+
+
+
+Create graph of revisit rates (hull metrics) by burn severity
+5. Finalize results section
+ 
+Other:
+Export shapefiles of the T-LoCoh space utilizations and eccentricities to Shapefiles, add to map
+Figure out permissions issues with ArcGIS online

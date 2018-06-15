@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<GroundOverlay>
+<name>layer</name>
+<Icon><href>Panther_fire.png</href><viewBoundScale>0.75</viewBoundScale></Icon>
+	<LatLonBox>
+		<north>41.6751741856848</north><south>41.4267024436881</south><east>-123.290346149271</east><west>-123.54380531316</west>
+	</LatLonBox>
+</GroundOverlay></kml>
