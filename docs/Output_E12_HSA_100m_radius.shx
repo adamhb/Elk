@@ -1,0 +1,174 @@
+> summary(mod_all)
+
+Call:
+glm.nb(formula = N_relocs ~ slope + I(slope^2) + aspect + pct_open_canopy, 
+    data = E12_HSA_data, init.theta = 0.4587932805, link = log)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.4057  -1.2198  -0.5421   0.0636   3.1783  
+
+Coefficients:
+                  Estimate Std. Error z value Pr(>|z|)   
+(Intercept)      0.3035069  0.4259887   0.712  0.47617   
+slope            0.1131172  0.0679637   1.664  0.09604 . 
+I(slope^2)      -0.0071945  0.0025596  -2.811  0.00494 **
+aspect          -0.0002676  0.0009836  -0.272  0.78559   
+pct_open_canopy  0.5236570  0.2447273   2.140  0.03237 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Negative Binomial(0.4588) family taken to be 1)
+
+    Null deviance: 493.62  on 494  degrees of freedom
+Residual deviance: 462.68  on 490  degrees of freedom
+  (5 observations deleted due to missingness)
+AIC: 1727.1
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  0.4588 
+          Std. Err.:  0.0466 
+
+ 2 x log-likelihood:  -1715.0620 
+> summary(mod_sunrise)
+
+Call:
+glm.nb(formula = sunrise_response ~ slope + I(slope^2) + aspect + 
+    pct_open_canopy, data = E12_HSA_data, init.theta = 0.4242429125, 
+    link = log)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-0.6906  -0.6065  -0.5797  -0.4048   2.5239  
+
+Coefficients:
+                  Estimate Std. Error z value Pr(>|z|)   
+(Intercept)     -2.3197178  0.7782702  -2.981  0.00288 **
+slope            0.1744507  0.1336687   1.305  0.19186   
+I(slope^2)      -0.0098507  0.0054968  -1.792  0.07312 . 
+aspect           0.0003736  0.0016559   0.226  0.82150   
+pct_open_canopy  0.3142343  0.3930364   0.800  0.42400   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Negative Binomial(0.4242) family taken to be 1)
+
+    Null deviance: 246.94  on 494  degrees of freedom
+Residual deviance: 236.00  on 490  degrees of freedom
+  (5 observations deleted due to missingness)
+AIC: 522.33
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  0.424 
+          Std. Err.:  0.139 
+
+ 2 x log-likelihood:  -510.329 
+> summary(mod_sunset)
+
+Call:
+glm.nb(formula = sunset_response ~ slope + I(slope^2) + aspect + 
+    pct_open_canopy, data = E12_HSA_data, init.theta = 0.3873986769, 
+    link = log)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-1.00840  -0.77156  -0.73680   0.01772   2.60275  
+
+Coefficients:
+                  Estimate Std. Error z value Pr(>|z|)   
+(Intercept)     -1.3167997  0.5689128  -2.315  0.02064 * 
+slope            0.0683347  0.0899952   0.759  0.44766   
+I(slope^2)      -0.0044869  0.0033853  -1.325  0.18503   
+aspect           0.0009943  0.0013199   0.753  0.45125   
+pct_open_canopy  0.8731765  0.3091813   2.824  0.00474 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Negative Binomial(0.3874) family taken to be 1)
+
+    Null deviance: 333.73  on 494  degrees of freedom
+Residual deviance: 319.28  on 490  degrees of freedom
+  (5 observations deleted due to missingness)
+AIC: 862.4
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  0.3874 
+          Std. Err.:  0.0708 
+
+ 2 x log-likelihood:  -850.3990 
+> summary(mod_night)
+
+Call:
+glm.nb(formula = night_response ~ slope + I(slope^2) + aspect + 
+    pct_open_canopy, data = E12_HSA_data, init.theta = 0.2026736267, 
+    link = log)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.0083  -0.7218  -0.6702  -0.4398   2.8597  
+
+Coefficients:
+                 Estimate Std. Error z value Pr(>|z|)   
+(Intercept)     -0.574470   0.671551  -0.855  0.39231   
+slope            0.062962   0.106827   0.589  0.55560   
+I(slope^2)      -0.005342   0.004007  -1.333  0.18241   
+aspect          -0.001632   0.001564  -1.043  0.29684   
+pct_open_canopy  1.233357   0.377407   3.268  0.00108 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Negative Binomial(0.2027) family taken to be 1)
+
+    Null deviance: 288.90  on 494  degrees of freedom
+Residual deviance: 268.54  on 490  degrees of freedom
+  (5 observations deleted due to missingness)
+AIC: 865.97
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  0.2027 
+          Std. Err.:  0.0313 
+
+ 2 x log-likelihood:  -853.9690 
+> summary(mod_day)
+
+Call:
+glm.nb(formula = day_response ~ slope + I(slope^2) + aspect + 
+    pct_open_canopy, data = E12_HSA_data, init.theta = 0.3034164937, 
+    link = log)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-0.96338  -0.88145  -0.76461   0.05365   3.07585  
+
+Coefficients:
+                 Estimate Std. Error z value Pr(>|z|)   
+(Intercept)     -0.918945   0.619513  -1.483  0.13799   
+slope            0.227241   0.106229   2.139  0.03242 * 
+I(slope^2)      -0.012608   0.004314  -2.922  0.00348 **
+aspect          -0.000903   0.001334  -0.677  0.49854   
+pct_open_canopy -0.501669   0.348270  -1.440  0.14974   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for Negative Binomial(0.3034) family taken to be 1)
+
+    Null deviance: 348.25  on 494  degrees of freedom
+Residual deviance: 322.07  on 490  degrees of freedom
+  (5 observations deleted due to missingness)
+AIC: 1005.7
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  0.3034 
+          Std. Err.:  0.0449 
+
+ 2 x log-likelihood:  -993.7420 

@@ -3,23 +3,46 @@
 #formatting the date and time
 date_time <- paste0(elk_locs$YEAR_,".", elk_locs$MONTH_,".", elk_locs$DAY_,".", elk_locs$HOUR_,".", elk_locs$MINUTE_,".",elk_locs$SECOND_)
 date_time <- as.POSIXct(strptime(date_time,format="%Y.%m.%d.%H.%M.%S"), tz = "UTC")
+attr(date_time, "tzone") <- "America/Los_Angeles"
 elk_locs$date_time <- date_time
+
+
+
+#adding my id names
+elk_locs$AID <- plyr::mapvalues(elk_locs$ANIMAL_ID, from = unique(elk_locs$ANIMAL_ID), to = paste0("E",seq(1:length(unique(elk_locs$ANIMAL_ID)))))
+
+old_new_names
+
+str(elk_locs$AID)
+
+
+
+
+#checking that times make sense
+
+#elk_locs <- elk_locs %>% arrange(ANIMAL_ID, date_time)
+
+#ggplot(data = elk_locs[1000:1020,], (aes(x = date_time, y = TEMP_))) + geom_point() + 
+  #scale_x_datetime(date_breaks = "4 hour", labels = date_format("%H"))
+
+
 #30108 observations
 
 #deleting the rows where there is not date time information
-NAtimes <- is.na(elk_locs$date_time)
+NAtimes <- sum(is.na(elk_locs$date_time))
+
 elk_locs <- elk_locs[NAtimes == FALSE,]
 
 
 #deleting a strange point that is way too far south and west
-all_elk_locs <- elk_locs[elk_locs$UTM_EAST > 10,]
+#all_elk_locs <- elk_locs[elk_locs$UTM_EAST > 10,]
 
 #creating a subset of just the marble mountain elk herds
 elk_locs <- all_elk_locs[elk_locs$UTM_EAST > 440000,]
 
 #deleting rows where there are NAs
 
-elk_locs <- elk_locs[is.na(elk_locs$UTM_EAST) == FALSE,]
+#elk_locs <- elk_locs[is.na(elk_locs$UTM_EAST) == FALSE,]
 
 #creating new animal ID names
 elk_locs$AID <- plyr::mapvalues(elk_locs$ANIMAL_ID, from = unique(elk_locs$ANIMAL_ID), to = paste0("E",seq(1:length(unique(elk_locs$ANIMAL_ID)))))

@@ -77,7 +77,7 @@ ggplot(data = na.omit(E12_table), mapping = aes(x = as.factor(canopy_edge), y = 
 
 HRmap_maker(maptype = "terrain", elknumber = 4)
 
-
+0.00830034180479156 + 0.0120082249520208 + 0.0168634363557888 + 0.0122741004946737
 
 
 

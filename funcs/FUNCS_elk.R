@@ -1,11 +1,11 @@
 #funcs
 
 #function to make a home range from a trajectory object
-HRmaker <- function(trajdata = ltraj.elk, elknum = 1, pos_error = 25, probC = 95, writeShapefile = FALSE, WGS1984 = FALSE){
-  AnimalID <- as.character(summary(ltraj.elk[elknum])[1][1,1])
-  sig1.x <- liker(tr = ltraj.elk[elknum],sig2 = pos_error, rangesig1 = c(1,10), plotit = F)[[1]][[1]]
+HRmaker <- function(trajdata = ltraj.elk, AnimalID = "E12", pos_error = 25, probC = 95, writeShapefile = FALSE, WGS1984 = FALSE){
+  trajdata.x <- trajdata[(summary(trajdata)$id == AnimalID)]
+  sig1.x <- liker(tr = trajdata.x,sig2 = pos_error, rangesig1 = c(1,10), plotit = F)[[1]][[1]]
   #creating a kernal density home range
-  kernel <- kernelbb(ltr = ltraj.elk[elknum],sig1 = sig1.x,sig2 = pos_error)
+  kernel <- kernelbb(ltr = trajdata.x,sig1 = sig1.x,sig2 = pos_error)
   hr <- getverticeshr(kernel, probC)
   proj4string(hr) <- CRS("+proj=utm +zone=10 +datum=WGS84")
   if(WGS1984 == TRUE){
